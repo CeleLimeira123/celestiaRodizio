@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -16,7 +16,7 @@ import NotFound from "./pages/NotFound";
 import { restaurante } from "./data/restaurante";
 
 function Layout() {
-  const [tema, setTema] = useState("claro");
+  const [tema, setTema] = useState<"claro" | "oscuro">("claro");
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   function cambiarTema() {
@@ -60,11 +60,7 @@ function Layout() {
 
       </div>
 
-      <Footer
-        nombre={restaurante.nombre}
-        direccion={restaurante.direccion}
-        anio={2026}
-      />
+      <Footer />
 
     </div>
   );
@@ -88,3 +84,4 @@ export default function App() {
     </Routes>
   );
 }
+

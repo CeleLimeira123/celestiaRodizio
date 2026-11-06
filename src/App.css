@@ -1,5 +1,3 @@
-/* FUEGO CELESTIAL - PALETA: #FBBA72 #CA5310 #BB4D00 #8F250C #691E06 */
-/* RESET */
 *{
     margin:0;
     padding:0;
@@ -31,7 +29,6 @@
     --sombra:0 12px 32px rgba(0,0,0,.24);
 }
 
-/* BASE */
 body{
     font-family:"DM Sans",Arial,sans-serif;
     background:var(--fondo);
@@ -59,7 +56,6 @@ img{
     max-width:100%;
 }
 
-/* ESTILOS COMUNES (REUTILIZADOS) */
 .navbar__usuario strong,
 .navbar__usuario small,
 .sidebar__bloque strong,
@@ -163,7 +159,6 @@ th,
     color:var(--suave);
 }
 
-/* LAYOUT GENERAL */
 .app{
     min-height:100vh;
     display:flex;
@@ -189,7 +184,6 @@ th,
     display:none;
 }
 
-/* HEADER */
 .navbar{
     height:76px;
     flex-shrink:0;
@@ -289,7 +283,6 @@ th,
     background:#ffffff38;
 }
 
-/* BOTONES */
 .btn{
     border:0;
     border-radius:9px;
@@ -349,7 +342,6 @@ th,
     color:var(--c2);
 }
 
-/* SIDEBAR */
 .sidebar{
     width:245px;
     flex-shrink:0;
@@ -420,7 +412,6 @@ th,
     margin:17px 0 0;
 }
 
-/* PORTADA (HERO) */
 .portada{
     position:relative;
     display:flex;
@@ -466,7 +457,6 @@ th,
     flex-wrap:wrap;
 }
 
-/* ENCABEZADO DE PAGINA */
 .encabezado-pagina h1{
     font:700 clamp(28px,3vw,36px) var(--serif);
     margin:5px 0 8px;
@@ -481,7 +471,6 @@ th,
     margin:2px 0 25px;
 }
 
-/* CARDS Y METRICAS */
 .metricas{
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
@@ -546,7 +535,7 @@ th,
     margin:0;
 }
 
-/* PANELES */
+
 .dashboard-grid{
     display:grid;
     grid-template-columns:1.15fr .85fr;
@@ -680,7 +669,7 @@ th,
     color:var(--c4);
 }
 
-/* TABLAS Y ESTADOS */
+
 .tabla-contenedor{
     overflow-x:auto;
 }
@@ -741,7 +730,7 @@ td{
     color:#a3321a;
 }
 
-/* FORMULARIOS Y CONFIGURACION */
+
 .buscador,
 .formulario input,
 .config-grid input{
@@ -818,7 +807,7 @@ td{
     margin:4px 0 0;
 }
 
-/* REPORTES */
+
 .grafico{
     height:230px;
     display:flex;
@@ -943,7 +932,7 @@ td{
     margin:16px 0 0;
 }
 
-/* MENU DE PLATOS */
+
 .menu-admin__filtros{
     display:flex;
     align-items:flex-start;
@@ -1047,7 +1036,7 @@ td{
     border-radius:10px;
 }
 
-/* RESERVAS */
+
 .reservas-lista{
     display:grid;
     gap:12px;
@@ -1073,7 +1062,6 @@ td{
     font-size:12px;
 }
 
-/* PAGINA 404 */
 .no-encontrada{
     text-align:center;
     padding:70px 20px;
@@ -1098,7 +1086,6 @@ td{
     margin:10px 0 22px;
 }
 
-/* FOOTER */
 .footer{
     display:flex;
     justify-content:space-between;
@@ -1117,7 +1104,7 @@ td{
     opacity:.8;
 }
 
-/* MODO OSCURO */
+
 :root[data-tema="oscuro"] .sidebar__enlace:hover,
 :root[data-tema="oscuro"] .sidebar__enlace--activo{
     background:#50301f;
@@ -1128,7 +1115,7 @@ td{
     color:#ffd0a7;
 }
 
-/* RESPONSIVE */
+
 @media(max-width:1050px){
 
 .metricas{

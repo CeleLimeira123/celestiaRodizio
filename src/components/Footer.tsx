@@ -1,6 +1,4 @@
-import type { JSX } from "react";
-
-function Footer(): JSX.Element {
+﻿function Footer() {
   return (
     <footer className="footer">
       © 2026 Fuego Celestial - Carnes al fuego, mesa sin fin

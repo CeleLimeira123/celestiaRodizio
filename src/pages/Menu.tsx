@@ -1,4 +1,4 @@
-
+﻿
 import { useState } from "react";
 
 interface Plato {
@@ -15,43 +15,43 @@ const platos: Plato[] = [
   {
     id: 1,
     nombre: "Picanha",
-    descripcion: "Picanha tierna con una capa dorada de grasa, cortada en la mesa y servida recién salida de las brasas.",
-    categoria: "Espetos del rodízio",
+    descripcion: "Picanha tierna con una capa dorada de grasa, cortada en la mesa y servida reciÃ©n salida de las brasas.",
+    categoria: "Espetos del rodÃ­zio",
     foto: "/photos/picanha.jpg",
-    etiqueta: "Más solicitado"
+    etiqueta: "MÃ¡s solicitado"
   },
   {
     id: 2,
     nombre: "Panceta crocante",
     descripcion: "Panceta de cerdo asada lentamente, con exterior crujiente y glaseado de frutos rojos.",
-    categoria: "Espetos del rodízio",
+    categoria: "Espetos del rodÃ­zio",
     foto: "/photos/panceta.jpg"
   },
   {
     id: 3,
     nombre: "Cortes de res al espeto",
-    descripcion: "Selección de cortes de res sazonados y asados al fuego para servir directamente en la mesa.",
-    categoria: "Espetos del rodízio",
+    descripcion: "SelecciÃ³n de cortes de res sazonados y asados al fuego para servir directamente en la mesa.",
+    categoria: "Espetos del rodÃ­zio",
     foto: "/photos/espetos-res.jpg"
   },
   {
     id: 4,
     nombre: "Chorizo y pollo",
-    descripcion: "Chorizo parrillero y pollo dorado, una combinación suave y sabrosa.",
-    categoria: "Espetos del rodízio",
+    descripcion: "Chorizo parrillero y pollo dorado, una combinaciÃ³n suave y sabrosa.",
+    categoria: "Espetos del rodÃ­zio",
     foto: "/photos/chorizo-pollo.jpg"
   },
   {
     id: 5,
     nombre: "Fraldinha con farofa",
-    descripcion: "Tiras de fraldinha a la brasa acompañadas de vinagreta fresca y farofa dorada.",
-    categoria: "Espetos del rodízio",
+    descripcion: "Tiras de fraldinha a la brasa acompaÃ±adas de vinagreta fresca y farofa dorada.",
+    categoria: "Espetos del rodÃ­zio",
     foto: "/photos/fraldinha.jpg"
   },
   {
     id: 6,
     nombre: "Parrillada mixta",
-    descripcion: "Bandeja para compartir con diferentes carnes, chorizos, papas y acompañamientos de la casa.",
+    descripcion: "Bandeja para compartir con diferentes carnes, chorizos, papas y acompaÃ±amientos de la casa.",
     categoria: "Parrilladas y platos",
     precio: 190,
     foto: "/photos/parrillada-mixta.jpg",
@@ -60,15 +60,15 @@ const platos: Plato[] = [
   {
     id: 7,
     nombre: "Costillar glaseado",
-    descripcion: "Costillar asado con glaseado de la casa, pollo grillado, papas rústicas y ensalada.",
+    descripcion: "Costillar asado con glaseado de la casa, pollo grillado, papas rÃºsticas y ensalada.",
     categoria: "Parrilladas y platos",
     precio: 120,
     foto: "/photos/costillar.jpg"
   },
   {
     id: 8,
-    nombre: "Tabla de entraña y chorizo",
-    descripcion: "Entraña en lonjas, chorizo parrillero, pan tostado y vinagreta fresca.",
+    nombre: "Tabla de entraÃ±a y chorizo",
+    descripcion: "EntraÃ±a en lonjas, chorizo parrillero, pan tostado y vinagreta fresca.",
     categoria: "Parrilladas y platos",
     precio: 110,
     foto: "/photos/tabla-entrana.jpg"
@@ -84,7 +84,7 @@ const platos: Plato[] = [
   {
     id: 10,
     nombre: "Hamburguesa de la casa",
-    descripcion: "Medallón de carne a la parrilla con queso, tocino, cebolla y salsas de la casa.",
+    descripcion: "MedallÃ³n de carne a la parrilla con queso, tocino, cebolla y salsas de la casa.",
     categoria: "Parrilladas y platos",
     precio: 65,
     foto: "/photos/hamburguesas.jpg"
@@ -96,12 +96,12 @@ const platos: Plato[] = [
     categoria: "Postres",
     precio: 22,
     foto: "/photos/flan.jpg",
-    etiqueta: "Clásico"
+    etiqueta: "ClÃ¡sico"
   },
   {
     id: 12,
     nombre: "Vasitos de chocolate",
-    descripcion: "Capas de crema, chocolate y galleta molida servidas en porción individual.",
+    descripcion: "Capas de crema, chocolate y galleta molida servidas en porciÃ³n individual.",
     categoria: "Postres",
     precio: 25,
     foto: "/photos/vasitos-chocolate.jpg"
@@ -129,57 +129,26 @@ export default function Menu() {
   const [filtro, setFiltro] = useState("Todos");
   const [busqueda, setBusqueda] = useState("");
 
-  // Guardar los platos que cumplen con la busqueda y el filtro
-  const platosVisibles: Plato[] = [];
+  const platosVisibles: Plato[] = platos.filter((plato) => {
+    const cumpleCategoria =
+      filtro === "Todos" || plato.categoria === filtro;
 
-  for (let i = 0; i < platos.length; i++) {
+    const textoBusqueda = busqueda.toLowerCase();
 
-    let plato = platos[i];
+    const cumpleBusqueda =
+      plato.nombre.toLowerCase().includes(textoBusqueda) ||
+      plato.descripcion.toLowerCase().includes(textoBusqueda);
 
-    let cumpleCategoria = false;
-    let cumpleBusqueda = false;
+    return cumpleCategoria && cumpleBusqueda;
+  });
 
-    // Comprobar la categoria
-    if (filtro === "Todos" || plato.categoria === filtro) {
-      cumpleCategoria = true;
-    }
+  const platosConPrecio = platos.filter(
+    (plato) => plato.precio !== undefined
+  ).length;
 
-    // Convertir los textos a minusculas
-    let nombre = plato.nombre.toLowerCase();
-    let descripcion = plato.descripcion.toLowerCase();
-    let textoBusqueda = busqueda.toLowerCase();
-
-    // Comprobar si coincide con la busqueda
-    if (
-      nombre.includes(textoBusqueda) ||
-      descripcion.includes(textoBusqueda)
-    ) {
-      cumpleBusqueda = true;
-    }
-
-    // Agregar el plato si cumple ambas condiciones
-    if (cumpleCategoria && cumpleBusqueda) {
-      platosVisibles.push(plato);
-    }
-  }
-
-  // Contar los platos que tienen precio individual
-  let platosConPrecio = 0;
-
-  for (let i = 0; i < platos.length; i++) {
-    if (platos[i].precio !== undefined) {
-      platosConPrecio++;
-    }
-  }
-
-  // Contar los postres
-  let cantidadPostres = 0;
-
-  for (let i = 0; i < platos.length; i++) {
-    if (platos[i].categoria === "Postres") {
-      cantidadPostres++;
-    }
-  }
+  const cantidadPostres = platos.filter(
+    (plato) => plato.categoria === "Postres"
+  ).length;
 
   return (
     <>
@@ -189,10 +158,10 @@ export default function Menu() {
           CARTA Y CONTROL DE PRODUCTOS
         </span>
 
-        <h1>Menú del restaurante</h1>
+        <h1>MenÃº del restaurante</h1>
 
         <p>
-          Consulta los platos, sus descripciones, fotografías y precios
+          Consulta los platos, sus descripciones, fotografÃ­as y precios
           para mantener actualizada la oferta de Fuego Celestial.
         </p>
 
@@ -202,7 +171,7 @@ export default function Menu() {
       <section className="metricas metricas--tres">
 
         <div className="card">
-          <span className="card__cabecera">Platos en catálogo</span>
+          <span className="card__cabecera">Platos en catÃ¡logo</span>
           <strong className="card__valor">{platos.length}</strong>
           <p className="card__detalle">Productos registrados</p>
         </div>
@@ -216,7 +185,7 @@ export default function Menu() {
         <div className="card">
           <span className="card__cabecera">Opciones de postre</span>
           <strong className="card__valor">{cantidadPostres}</strong>
-          <p className="card__detalle">Preparaciones de pastelería</p>
+          <p className="card__detalle">Preparaciones de pastelerÃ­a</p>
         </div>
 
       </section>
@@ -227,7 +196,7 @@ export default function Menu() {
         <div className="panel__encabezado">
 
           <div>
-            <span className="eyebrow">CATÁLOGO</span>
+            <span className="eyebrow">CATÃLOGO</span>
             <h2>Platos y precios</h2>
           </div>
 
@@ -248,10 +217,10 @@ export default function Menu() {
             </button>
 
             <button
-              className={filtro === "Espetos del rodízio" ? "chip chip--activo" : "chip"}
-              onClick={() => setFiltro("Espetos del rodízio")}
+              className={filtro === "Espetos del rodÃ­zio" ? "chip chip--activo" : "chip"}
+              onClick={() => setFiltro("Espetos del rodÃ­zio")}
             >
-              Espetos del rodízio
+              Espetos del rodÃ­zio
             </button>
 
             <button
@@ -276,7 +245,7 @@ export default function Menu() {
             type="text"
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            placeholder="Buscar plato o descripción..."
+            placeholder="Buscar plato o descripciÃ³n..."
           />
 
         </div>
@@ -285,7 +254,7 @@ export default function Menu() {
         {platosVisibles.length === 0 ? (
 
           <p className="vacio">
-            No hay platos que coincidan con la búsqueda.
+            No hay platos que coincidan con la bÃºsqueda.
           </p>
 
         ) : (
@@ -321,7 +290,7 @@ export default function Menu() {
                     <strong>
                       {plato.precio !== undefined
                         ? "Bs " + plato.precio
-                        : "Incluido en rodízio"}
+                        : "Incluido en rodÃ­zio"}
                     </strong>
 
                   </div>
@@ -343,10 +312,10 @@ export default function Menu() {
 
         <strong>Nota administrativa:</strong>
 
-        Los espetos están incluidos en los planes de rodízio.
+        Los espetos estÃ¡n incluidos en los planes de rodÃ­zio.
         Los precios individuales de parrilladas, platos y postres
-        son valores de referencia del catálogo académico y pueden
-        editarse según la lista vigente del restaurante.
+        son valores de referencia del catÃ¡logo acadÃ©mico y pueden
+        editarse segÃºn la lista vigente del restaurante.
 
       </section>
 
