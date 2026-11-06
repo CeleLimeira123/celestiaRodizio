@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 
 export default function Configuracion() {
 
-  // 1. ESTADOS CON LOS DATOS DEL RESTAURANTE
+  
   const [nombre, setNombre] = useState("Fuego Celestial");
   const [direccion, setDireccion] = useState(
     "Av. Principal #123, Zona Central"
@@ -14,14 +13,13 @@ export default function Configuracion() {
   );
   const [horario, setHorario] = useState("12:00 - 23:00");
 
-  // 2. ESTADO PARA CONTROLAR EL GUARDADO
+
   const [guardado, setGuardado] = useState(false);
 
-  // 3. MOSTRAR LA INTERFAZ
+ 
   return (
     <>
 
-      {/* ENCABEZADO DE LA PÁGINA */}
       <section className="encabezado-pagina">
 
         <span className="eyebrow">
@@ -37,7 +35,6 @@ export default function Configuracion() {
 
       </section>
 
-      {/* INFORMACIÓN DEL RESTAURANTE */}
       <section className="panel configuracion-panel">
 
         <div className="panel__encabezado">
@@ -57,10 +54,8 @@ export default function Configuracion() {
 
         </div>
 
-        {/* FORMULARIO DE CONFIGURACIÓN */}
         <div className="config-grid">
 
-          {/* NOMBRE COMERCIAL */}
           <label>
             Nombre comercial
 
@@ -73,7 +68,6 @@ export default function Configuracion() {
             />
           </label>
 
-          {/* DIRECCIÓN */}
           <label>
             Dirección
 
@@ -86,7 +80,6 @@ export default function Configuracion() {
             />
           </label>
 
-          {/* TELÉFONO */}
           <label>
             Teléfono de contacto
 
@@ -99,7 +92,6 @@ export default function Configuracion() {
             />
           </label>
 
-          {/* CORREO */}
           <label>
             Correo administrativo
 
@@ -113,7 +105,6 @@ export default function Configuracion() {
             />
           </label>
 
-          {/* HORARIO */}
           <label>
             Horario de atención
 
@@ -128,7 +119,6 @@ export default function Configuracion() {
 
         </div>
 
-        {/* BOTÓN PARA GUARDAR */}
         <div className="config-pie">
 
           <button
@@ -138,7 +128,6 @@ export default function Configuracion() {
             Guardar cambios
           </button>
 
-          {/* MENSAJE DE CONFIRMACIÓN */}
           {guardado && (
             <span className="aviso-ok">
               ✓ Cambios aplicados en esta sesión.
@@ -149,7 +138,6 @@ export default function Configuracion() {
 
       </section>
 
-      {/* ESTADO Y SEGURIDAD DEL SISTEMA */}
       <section className="panel seguridad">
 
         <span className="eyebrow">
@@ -158,7 +146,6 @@ export default function Configuracion() {
 
         <h2>Estado del sistema</h2>
 
-        {/* ESTADO DEL PANEL */}
         <div className="ajuste">
 
           <div>
@@ -175,7 +162,6 @@ export default function Configuracion() {
 
         </div>
 
-        {/* ESTADO DEL ALMACENAMIENTO */}
         <div className="ajuste">
 
           <div>
